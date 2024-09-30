@@ -29,18 +29,10 @@ SECRET_KEY = 'django-insecure-k#+wcxd*n+4!n%_^#veg9*86zyajbjgn6cvuvt&ga^v1**f7_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-#lo mismo pero con la ip del pc ALLOWED_HOSTS = ["192.168.101.76"]
-# ALLOWED_HOSTS = ["192.168.101.76"]
-#mas esto al ejecutar python manage.py runserver 0.0.0.0:8000
+# Configurar ALLOWED_HOSTS para aceptar solicitudes desde dominios permitidos
+ALLOWED_HOSTS = ['refererail-production.up.railway.app', 'localhost', '127.0.0.1']
 
 # Application definition
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8100",
-# ]
-# CORS_ALLOWED_ORIGINS = True
-
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -128,6 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Configuración de CORS para permitir solicitudes desde Ionic
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8100",  # Para el entorno de desarrollo local de Ionic
+    # "https://miappionic.com",  # Descomenta esta línea si tienes una URL en producción para tu app
+]
+
+# También puedes usar temporalmente (solo para pruebas):
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
